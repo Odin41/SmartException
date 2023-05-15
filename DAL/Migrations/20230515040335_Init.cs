@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace SmartException.Migrations
+namespace DAL.Migrations
 {
     /// <inheritdoc />
     public partial class Init : Migration
@@ -16,6 +17,7 @@ namespace SmartException.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Guid = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Age = table.Column<int>(type: "INTEGER", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false)
