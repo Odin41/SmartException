@@ -1,9 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SmartException.Api.v1.Users.Models;
+namespace SmartException.V1.Users.Models;
 
 public class UserDto
 {
+
+    public Guid Guid { get; set; }
+
     /// <summary>
     /// Имя пользователя
     /// </summary>

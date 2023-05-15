@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Entities.Models;
-using SmartException.Api.v1.Users.Models;
+using SmartException.V1.Users.Models;
 
-namespace SmartException.Api.v1.Users.Mappers;
+namespace DAL.Mappers;
 
 public class UserProfile: Profile
 {

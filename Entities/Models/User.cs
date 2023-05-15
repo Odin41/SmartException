@@ -4,6 +4,8 @@ namespace Entities.Models;
 
 public class User : BaseEntity
 {
+    public Guid Guid { get; set; }
+    
     public string Name { get; set; }
     public int Age { get; set; }
     

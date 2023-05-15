@@ -1,7 +1,7 @@
 ﻿using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace SmartException.Data;
+namespace DAL;
 
 public class ApplicationDbContext : DbContext
 {
@@ -12,5 +12,4 @@ public class ApplicationDbContext : DbContext
     }
 
     public DbSet<User> Users { get; set; }
-
 }

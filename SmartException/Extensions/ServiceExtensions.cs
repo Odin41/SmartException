@@ -1,9 +1,9 @@
 ﻿using Contracts;
+using DAL;
 using LoggerService;
 using Microsoft.EntityFrameworkCore;
 using NLog;
-using SmartException.Api.v1.Users.Mappers;
-using SmartException.Data;
+using Services;
 
 namespace SmartException.Extensions;
 
@@ -24,12 +24,11 @@ public static class ServiceExtensions
         service.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlite(connectionString));
         service.AddDatabaseDeveloperPageExceptionFilter();
-
     }
 
-    public static void ConfigureMappings(this IServiceCollection service)
+    public static void ConfigureServices(this IServiceCollection service)
     {
-        service.AddAutoMapper(typeof(UserProfile));
+        service.AddScoped<IUsersService, UserService>();
     }
 
 }
