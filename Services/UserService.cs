@@ -2,6 +2,7 @@
 using Contracts;
 using DAL;
 using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using SmartException.V1.Users.Models;
 
 namespace Services;
@@ -17,16 +18,16 @@ public class UserService: IUsersService
         _mapper = mapper;
     }
     
-    public IList<UserDto> GetAllUsers()
+    public async Task<IEnumerable<UserDto>> GetAllUsersAsync()
     {
         var users = _mapper.ProjectTo<UserDto>(_context.Users);
         
-        return users.ToList();
+        return await users.ToArrayAsync();
     }
 
-    public UserDto GetUser(string guid)
+    public async Task<UserDto> GetUserAsync(string guid)
     {
-        var user = _context.Users.FirstOrDefault(u => u.Guid.ToString() == guid.Trim());
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Guid.ToString() == guid.Trim());
         if (user == null)
         {
             throw new KeyNotFoundException($"Пользователь с Guid {guid} не найден.");
@@ -37,28 +38,28 @@ public class UserService: IUsersService
         return dto;
     }
 
-    public bool DeleteUser(string guid)
+    public async Task<bool> DeleteUserAsync(string guid)
     {
-        var existsUser = _context.Users.FirstOrDefault(u=>u.Guid.ToString() == guid.Trim());
+        var existsUser = await _context.Users.FirstOrDefaultAsync(u=>u.Guid.ToString() == guid.Trim());
         if (existsUser == null)
         {
             throw new KeyNotFoundException($"Пользователь с Guid {guid} не найден.");
         }
 
         _context.Users.Remove(existsUser);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
 
         return true;
     }
 
-    public bool AddUser(UserDto user)
+    public async Task<bool> AddUserAsync(UserDto user)
     {
         user.Email = user.Email.Trim().ToLower();
         user.Guid = Guid.NewGuid();
         
         var userEntity = _mapper.Map<User>(user);
-        _context.Users.Add(userEntity);
-        _context.SaveChanges();
+        await _context.Users.AddAsync(userEntity);
+        await _context.SaveChangesAsync();
 
         return true;
     }

@@ -4,11 +4,11 @@ namespace Contracts;
 
 public interface IUsersService
 {
-    public IList<UserDto> GetAllUsers();
+    public Task<IEnumerable<UserDto>> GetAllUsersAsync();
 
-    public UserDto GetUser(string guid);
+    public Task<UserDto> GetUserAsync(string guid);
 
-    public bool DeleteUser(string guid);
+    public Task<bool> DeleteUserAsync(string guid);
 
-    public bool AddUser(UserDto user);
+    public Task<bool> AddUserAsync(UserDto user);
 }

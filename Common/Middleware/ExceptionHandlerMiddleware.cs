@@ -1,14 +1,15 @@
 ﻿using System.Net;
-using Contracts;
-using Entities.Models;
+using Common.Exceptions;
+using Common.Interfaces;
+using Common.Models;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using SmartException.Exceptions;
 
-namespace SmartException.Middleware;
+namespace Common.Middleware;
 
-public class BackofficeExceptionHandlerMiddleware : AbstractExceptionHandlerMiddleware
+public class ExceptionHandlerMiddleware : AbstractExceptionHandlerMiddleware
 {
-    public BackofficeExceptionHandlerMiddleware(RequestDelegate next, ILoggerManager logger) : base(next, logger)
+    public ExceptionHandlerMiddleware(RequestDelegate next, ILoggerManager logger) : base(next, logger)
     {
     }
 

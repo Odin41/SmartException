@@ -1,7 +1,8 @@
 ﻿using System.Net;
-using Contracts;
+using Common.Interfaces;
+using Microsoft.AspNetCore.Http;
 
-namespace SmartException.Middleware;
+namespace Common.Middleware;
 
 /// <summary>
 /// Abstract handler for all exceptions.

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace SmartException.Exceptions;
+namespace Common.Exceptions;
 
 [Serializable]
 public class ValidationException: Exception
