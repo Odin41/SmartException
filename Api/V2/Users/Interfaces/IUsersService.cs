@@ -1,6 +1,6 @@
-﻿using SmartException.V1.Users.Models;
+﻿using Api.V2.Users.Models;
 
-namespace Contracts;
+namespace Api.V2.Users.Interfaces;
 
 public interface IUsersService
 {

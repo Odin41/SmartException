@@ -1,7 +1,7 @@
-﻿using DAL.Mappers;
+﻿using Api.V1.Users.Mappers;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DAL.Extensions;
+namespace Api.Extensions;
 
 public static class MapperConfigurationExtension
 {

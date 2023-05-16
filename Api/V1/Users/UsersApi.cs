@@ -1,10 +1,10 @@
-﻿using Asp.Versioning.Builder;
-using Contracts;
+﻿using Api.V1.Users.Interfaces;
+using Asp.Versioning.Builder;
 using Microsoft.AspNetCore.Mvc;
-using SmartException.V1.Users.Models;
+using Api.V1.Users.Models;
 
-namespace Api.V1;
-public static class Users
+namespace Api.V1.Users;
+public static class UsersApi
 {
     public static void UsersRegisterV1(this WebApplication app,  ApiVersionSet apiSet)
     {

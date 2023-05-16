@@ -1,17 +1,13 @@
-﻿using Asp.Versioning.Builder;
-using Contracts;
+﻿using Api.V2.Users.Interfaces;
+using Api.V2.Users.Models;
+using Asp.Versioning.Builder;
 using Microsoft.AspNetCore.Mvc;
-using SmartException.V1.Users.Models;
 
-namespace Api.V2;
-public static class Users
+namespace Api.V2.Users;
+public static class UsersApi
 {
-    public static void UsersRegisterV2(this WebApplication app, ApiVersionSet apiSet)
+    public static void UsersRegisterV2(this WebApplication app,  ApiVersionSet apiSet)
     {
-        /*var userGroup = app.MapGroup("/v2/users")
-            .MapToApiVersion(2.0)
-            .WithApiVersionSet(apiSet);*/
-        
         app.MapGet("/v{api-version:apiVersion}/all", GetAllUsers)
             .WithApiVersionSet(apiSet)
             .MapToApiVersion(2);
@@ -20,11 +16,11 @@ public static class Users
             .WithApiVersionSet(apiSet)
             .MapToApiVersion(2);
         
-        app.MapDelete("/v{api-version:apiVersion}/delete", Delete)            
+        app.MapDelete("/v{api-version:apiVersion}/delete", Delete)
             .WithApiVersionSet(apiSet)
             .MapToApiVersion(2);
         
-        app.MapGet("/v{api-version:apiVersion}/{guid}", GetUser)            
+        app.MapGet("/v{api-version:apiVersion}/{guid}", GetUser)
             .WithApiVersionSet(apiSet)
             .MapToApiVersion(2);
     }

@@ -1,11 +1,9 @@
 ﻿using Common.Interfaces;
-using Contracts;
 using DAL;
 using LoggerService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
-using Services;
 
 namespace Api.Extensions;
 
@@ -29,7 +27,5 @@ public static class ServiceExtensions
 
     public static void ConfigureServices(this IServiceCollection services)
     {
-        services.AddScoped<IUsersService, UserService>();
-       
     }
 }

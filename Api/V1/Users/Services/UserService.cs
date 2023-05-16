@@ -1,13 +1,14 @@
-﻿using AutoMapper;
-using Contracts;
+﻿using Api.V1.Users.Interfaces;
+using Api.V1.Users.Models;
+using AutoMapper;
+using Common.Exceptions;
 using DAL;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
-using SmartException.V1.Users.Models;
 
-namespace Services;
+namespace Api.V1.Users.Services;
 
-public class UserService: IUsersService
+public class UserService : IUsersService
 {
     private readonly ApplicationDbContext _context;
     private readonly IMapper _mapper;
