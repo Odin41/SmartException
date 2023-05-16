@@ -18,7 +18,8 @@ public class ExceptionHandlerMiddleware : AbstractExceptionHandlerMiddleware
         HttpStatusCode code;
         switch (exception)
         {
-            case KeyNotFoundException
+            case NotFoundException 
+                or KeyNotFoundException 
                 or FileNotFoundException:
                 code = HttpStatusCode.NotFound;
                 break;

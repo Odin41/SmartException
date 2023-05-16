@@ -30,7 +30,7 @@ public class UserService: IUsersService
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Guid.ToString() == guid.Trim());
         if (user == null)
         {
-            throw new KeyNotFoundException($"Пользователь с Guid {guid} не найден.");
+            throw new NotFoundException($"Пользователь с Guid {guid} не найден.");
         }
 
         var dto = _mapper.Map<UserDto>(user);
@@ -43,7 +43,7 @@ public class UserService: IUsersService
         var existsUser = await _context.Users.FirstOrDefaultAsync(u=>u.Guid.ToString() == guid.Trim());
         if (existsUser == null)
         {
-            throw new KeyNotFoundException($"Пользователь с Guid {guid} не найден.");
+            throw new NotFoundException($"Пользователь с Guid {guid} не найден.");
         }
 
         _context.Users.Remove(existsUser);

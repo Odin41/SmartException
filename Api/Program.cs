@@ -4,7 +4,7 @@ using Api.V2;
 using Common.Middleware;
 using DAL.Extensions;
 using Asp.Versioning.Conventions;
-
+using Common.Extensions;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +12,7 @@ builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureDbContext(builder.Configuration);
 builder.Services.ConfigureMappings();
 builder.Services.ConfigureServices();
-builder.Services.ConfigureSwagger();
+builder.Services.ConfigureSwaggerMinimalApi();
 
 var app = builder.Build();
 
@@ -25,23 +25,17 @@ var users = app.NewApiVersionSet()
 app.UsersRegisterV1(users);
 app.UsersRegisterV2(users);
 
-
 app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
-    app.ConfigureSwaggerUi();
+    app.ConfigureSwaggerUiMinimalApi();
 }
 else
 {
     app.UseHsts();
 }
 
-
-
-
-//app.UseRouting();
 app.UseHttpsRedirection();
-
 
 app.Run();
