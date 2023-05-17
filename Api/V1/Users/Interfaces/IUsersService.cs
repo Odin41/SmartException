@@ -11,4 +11,6 @@ public interface IUsersService
     public Task<bool> DeleteUserAsync(string guid);
 
     public Task<bool> AddUserAsync(UserDto user);
+    
+    public Task<bool> UpdateAsync(UserDto user);
 }

@@ -64,4 +64,18 @@ public class UserService : IUsersService
 
         return true;
     }
+
+    public async Task<bool> UpdateAsync(UserDto user)
+    {
+        var existsUser = await _context.Users.FirstOrDefaultAsync(u=>u.Guid.ToString().ToLower() == user.Guid.ToString().Trim().ToLower());
+        if (existsUser == null)
+        {
+            throw new NotFoundException($"Пользователь с Guid {user.Guid} не найден.");
+        }
+
+        _mapper.Map(user, existsUser);
+        await _context.SaveChangesAsync();
+        
+        return true;
+    }
 }

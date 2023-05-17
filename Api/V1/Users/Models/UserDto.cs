@@ -2,24 +2,18 @@
 
 namespace Api.V1.Users.Models;
 
-public class UserDto
+public record UserDto
 {
-
     public Guid Guid { get; set; }
-
+    
+#pragma warning disable CS8618
     /// <summary>
     /// Имя пользователя
     /// </summary>
     [Required]
     [Display(Name = "Имя")]
-    public string Name { get; set; } = null!;
 
-    /// <summary>
-    /// Возраст пользователя
-    /// </summary>
-    [Required]
-    [Display(Name = "Возраст")]
-    public int Age { get; set; }
+    public string Name { get; set; }
 
     /// <summary>
     /// Email пользователя
@@ -27,4 +21,12 @@ public class UserDto
     [Required]
     [Display(Name = "Email")]
     public string Email { get; set; }
+#pragma warning restore CS8618
+
+    /// <summary>
+    /// Возраст пользователя
+    /// </summary>
+    [Required]
+    [Display(Name = "Возраст")]
+    public int Age { get; set; }
 }
