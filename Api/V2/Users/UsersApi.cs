@@ -2,11 +2,12 @@
 using Asp.Versioning.Builder;
 using Api.V2.Users.Models;
 using Common.Exceptions;
+using Common.Interfaces;
 
 namespace Api.V2.Users;
-public static class UsersApi
+public class UsersApi : IApi
 {
-    public static void UsersRegisterV2(this WebApplication app, ApiVersionSet apiSet)
+    public void Register(WebApplication app, ApiVersionSet apiSet)
     {
         app.MapGet("v{api-version:apiVersion}/users", async (IUsersService usersService) =>
             {

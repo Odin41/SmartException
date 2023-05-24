@@ -1,12 +1,13 @@
-﻿using Api.V1.Users.Interfaces;
+﻿using System.Collections;
+using Api.V1.Users.Interfaces;
 using Asp.Versioning.Builder;
 using Api.V1.Users.Models;
-using Common.Exceptions;
+using Common.Interfaces;
 
 namespace Api.V1.Users;
-public static class UsersApi
+public class UsersApi : IApi
 {
-    public static void UsersRegisterV1(this WebApplication app, ApiVersionSet apiSet)
+    public void Register(WebApplication app, ApiVersionSet apiSet)
     {
         app.MapGet("v{api-version:apiVersion}/users", async (IUsersService usersService) =>
             {

@@ -17,7 +17,7 @@ public static class ServiceExtensions
 
         services.AddApiVersioning(opt =>
             {
-                opt.DefaultApiVersion = new ApiVersion(1,0);
+                opt.DefaultApiVersion = new ApiVersion(2,0);
                 opt.AssumeDefaultVersionWhenUnspecified = true;
                 opt.ApiVersionReader = new UrlSegmentApiVersionReader();
             })
@@ -32,16 +32,16 @@ public static class ServiceExtensions
     {
         app.UseSwagger();
         app.UseSwaggerUI(opt =>
-        {
-            var descriptions = app.DescribeApiVersions();
+         {
+             var descriptions = app.DescribeApiVersions();
 
-            foreach (var description in descriptions)
-            {
-                var url = $"/swagger/{description.GroupName}/swagger.json";
-                var name = description.GroupName.ToUpperInvariant();
-                opt.SwaggerEndpoint(url, name);
-            }
-        });
+             foreach (var description in descriptions)
+             {
+                 var url = $"/swagger/{description.GroupName}/swagger.json";
+                 var name = description.GroupName.ToUpperInvariant();
+                 opt.SwaggerEndpoint(url, name);
+             }
+         });
     }
     
 }
